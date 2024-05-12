@@ -10,7 +10,7 @@ const Footer = () => {
 				<div className="flex items-center justify-center w-12 h-12 rounded-full dark:bg-violet-600">
 				<img className='w-[80px] h-[55px]' src="https://media.istockphoto.com/id/1038356020/vector/restaurant-icon.jpg?s=612x612&w=0&k=20&c=Tk_v3JuJA4lz_8ZRJi78xS4p75Idqt97uEtYJciVtFI=" alt="" />
 				</div>
-				<span className="self-center text-2xl font-semibold">Delish<span className='text-[#66A000]'>Domain</span></span>
+				<span className="self-center text-2xl font-semibold">Nutri<span className='text-[#66A000]'>Harvest</span></span>
 			</a>
 		</div>
 		<div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">

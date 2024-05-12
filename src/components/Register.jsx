@@ -49,12 +49,12 @@ const Register = () => {
     }
 
     return (
-        <div className="hero min-h-screen container mx-auto rounded-lg bg-center bg-cover bg-[url('https://media.istockphoto.com/id/1165399909/photo/delicious-meal-on-a-black-plate-top-view-copy-space.jpg?s=612x612&w=0&k=20&c=vrMzS4pY_QjiDtCzpVE3ClKqbU636fb4CKH0nlsduC4=')]">
+        <div className="hero min-h-screen container mx-auto rounded-lg bg-center bg-cover bg-[url('https://media.istockphoto.com/id/1182569262/photo/student-hands-holding-red-apple-with-blackboard-background-happy-teachers-day.jpg?s=612x612&w=0&k=20&c=uCyu3NunzWMDuntidQuSNdLEhnSuFrNYrMgWK50hnAM=')]">
             <div className="hero-content flex-col ">
                 <div className="text-center">
                     <h1 className="text-5xl font-bold text-white">Sign-up now!</h1>
                 </div>
-                <p className='text-white text-center font-semibold'>Join DelishDomain today! Sign up now to unlock a world of gastronomic wonders and culinary adventures. Let's embark on a journey of taste together!</p>
+                <p className='text-white text-center font-semibold'>Join NutriHarvest today! Sign up now to unlock a world of nourishment and culinary compassion. Let's embark on a journey of giving together! 🌾</p>
                 <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <form onSubmit={handleRegister} className="card-body">
                         <div className="form-control">

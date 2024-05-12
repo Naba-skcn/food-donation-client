@@ -13,6 +13,8 @@ import Register from './components/Register.jsx';
 import AuthProvider from './components/providers/AuthProvider.jsx';
 import AvailableFoods from './components/AvailableFoods.jsx';
 import AboutUs from './components/AboutUs.jsx';
+import PrivateRoute from './components/routes/Privateroute.jsx';
+import AddFood from './AddFood.jsx';
 
 
 const router = createBrowserRouter([
@@ -40,6 +42,10 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>
       },
+      {
+        path: "/add",
+        element: <PrivateRoute><AddFood></AddFood></PrivateRoute>
+      }
     ]
   },
 ]);

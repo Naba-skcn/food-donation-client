@@ -50,14 +50,14 @@ const Login = () => {
     }
 
     return (
-        <div className="hero container mx-auto rounded-lg min-h-screen bg-center bg-cover bg-[url('https://media.istockphoto.com/id/1165399909/photo/delicious-meal-on-a-black-plate-top-view-copy-space.jpg?s=612x612&w=0&k=20&c=vrMzS4pY_QjiDtCzpVE3ClKqbU636fb4CKH0nlsduC4=')]">
+        <div className="hero container mx-auto rounded-lg min-h-screen bg-center bg-cover bg-[url('https://media.istockphoto.com/id/1182569262/photo/student-hands-holding-red-apple-with-blackboard-background-happy-teachers-day.jpg?s=612x612&w=0&k=20&c=uCyu3NunzWMDuntidQuSNdLEhnSuFrNYrMgWK50hnAM=')]">
             
             <ToastContainer />
             <div className="hero-content flex-col ">
                 <div className="text-center">
                     <h1 className="text-5xl font-bold text-shadow-lg text-white">Sign-in now!</h1>
                 </div>
-                <p className='text-white font-semibold text-center'>Welcome back to DelishDomain! Indulge in culinary delights with just a click.<br />Sign in now and savor the flavors!🍽️</p>
+                <p className='text-white font-semibold text-center'>Welcome back to NutriHarvest! Make a difference with every meal.<br />Sign in now and nourish those in need! 🥦</p>
                 <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <form onSubmit={handleLogin} className="card-body">
                         <div className="form-control">
