@@ -49,12 +49,12 @@ const Register = () => {
     }
 
     return (
-        <div className="hero min-h-screen container mx-auto rounded-lg bg-center bg-cover bg-[url('https://t3.ftcdn.net/jpg/01/91/27/76/360_F_191277640_tdXKlzGlKAI8701Wd0WHQm6ljHAgDGPw.jpg')]">
+        <div className="hero min-h-screen container mx-auto rounded-lg bg-center bg-cover bg-[url('https://media.istockphoto.com/id/1165399909/photo/delicious-meal-on-a-black-plate-top-view-copy-space.jpg?s=612x612&w=0&k=20&c=vrMzS4pY_QjiDtCzpVE3ClKqbU636fb4CKH0nlsduC4=')]">
             <div className="hero-content flex-col ">
                 <div className="text-center">
-                    <h1 className="text-5xl font-bold text-white">Register now!</h1>
+                    <h1 className="text-5xl font-bold text-white">Sign-up now!</h1>
                 </div>
-                <p className='text-white text-center font-semibold'>Join the RusticChic Crafts community today! Sign up to discover unique handcrafted treasures and connect with fellow artisans.</p>
+                <p className='text-white text-center font-semibold'>Join DelishDomain today! Sign up now to unlock a world of gastronomic wonders and culinary adventures. Let's embark on a journey of taste together!</p>
                 <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <form onSubmit={handleRegister} className="card-body">
                         <div className="form-control">
@@ -81,11 +81,11 @@ const Register = () => {
                             </span>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn bg-[#BA4A00] border-[#BA4A00] text-white">Register</button>
+                            <button className="btn bg-[#66A000] border-[#66A000] text-white">Sign up</button>
                             {error && <p className="text-red-500 mt-2">{error}</p>}
                         </div>
                     </form>
-                    <p className='text-center'>Already have an account? Please<Link to="/login"><button className='btn btn-link'>Login</button></Link></p>
+                    <p className='text-center'>Already have an account? Please<Link to="/login"><button className='btn btn-link'>Sign in</button></Link></p>
                 </div>
             </div>
         </div>

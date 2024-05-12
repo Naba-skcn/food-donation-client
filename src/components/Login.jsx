@@ -50,14 +50,14 @@ const Login = () => {
     }
 
     return (
-        <div className="hero container mx-auto rounded-lg min-h-screen bg-center bg-cover bg-[url('https://t3.ftcdn.net/jpg/01/91/27/76/360_F_191277640_tdXKlzGlKAI8701Wd0WHQm6ljHAgDGPw.jpg')]">
+        <div className="hero container mx-auto rounded-lg min-h-screen bg-center bg-cover bg-[url('https://media.istockphoto.com/id/1165399909/photo/delicious-meal-on-a-black-plate-top-view-copy-space.jpg?s=612x612&w=0&k=20&c=vrMzS4pY_QjiDtCzpVE3ClKqbU636fb4CKH0nlsduC4=')]">
             
             <ToastContainer />
             <div className="hero-content flex-col ">
                 <div className="text-center">
-                    <h1 className="text-5xl font-bold text-shadow-lg text-white">Login now!</h1>
+                    <h1 className="text-5xl font-bold text-shadow-lg text-white">Sign-in now!</h1>
                 </div>
-                <p className='text-white font-semibold text-center'>Welcome back to RusticChic Crafts!🌿<br />Log in to explore artisanal wonders and unlock exclusive offers.</p>
+                <p className='text-white font-semibold text-center'>Welcome back to DelishDomain! Indulge in culinary delights with just a click.<br />Sign in now and savor the flavors!🍽️</p>
                 <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <form onSubmit={handleLogin} className="card-body">
                         <div className="form-control">
@@ -76,7 +76,7 @@ const Login = () => {
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn bg-[#BA4A00] border-[#BA4A00] text-white">Login</button>
+                            <button className="btn bg-[#66A000] border-[#66A000] text-white">Sign in</button>
                         </div>
                     </form>
                     <p className='text-center font-semibold text-1xl'>Or, Sign in Using..</p>
@@ -84,7 +84,7 @@ const Login = () => {
                         <button onClick={handleGoogleSignIn}><AiFillGoogleCircle className='size-[25px]' /></button>
                         <button onClick={handleGithubSignIn}><AiFillGithub className='size-[25px]' /></button>
                     </div>
-                    <p className='text-center'>New here? Please <Link to="/register" className='btn btn-link'>Register</Link></p>
+                    <p className='text-center'>New here? Please <Link to="/register" className='btn btn-link'>Sign up</Link></p>
                 </div>
             </div>
         </div>

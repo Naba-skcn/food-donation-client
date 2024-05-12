@@ -60,12 +60,12 @@ const Navbar = () => {
                         <div className="tooltip tooltip-left" data-tip={user.displayName}>
                             <span><img className='rounded-full size-[30px]' src={user.photoURL} alt="" /></span>
                         </div>
-                        <button onClick={handleLogOut} className="btn btn-sm  bg-[#66A000] border-[#66A000] text-white ml-1">Logout</button>
+                        <button onClick={handleLogOut} className="btn btn-sm  bg-[#66A000] border-[#66A000] text-white ml-1">Sign out</button>
                     </>
                 ) : (
                     <>
-                        <Link to="/login"><button className="btn btn-sm bg-[#66A000] border-white text-white">Login</button></Link>
-                        <Link to="/register"><button className="btn btn-sm bg-[#66A000] border-white text-white hidden lg:block">Register</button></Link>
+                        <Link to="/login"><button className="btn btn-sm bg-[#66A000] border-white text-white">Sign in</button></Link>
+                        <Link to="/register"><button className="btn btn-sm bg-[#66A000] border-white text-white hidden lg:block">Sign up</button></Link>
                     </>
                 )}
             </div>
