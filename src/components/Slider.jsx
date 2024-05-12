@@ -61,7 +61,8 @@ const Slider = () => {
                     >
                         <h1 className="text-4xl font-bold">Embark on a Culinary Journey at DelishDomain.</h1>
                         <p className="text-sm lg:text-lg">Savor the flavors of our handpicked culinary delights, crafted with passion and expertise. Dive into our curated collection of mouthwatering dishes, where every bite tells a story of culinary mastery. Whether you're seeking comfort classics or adventurous creations, DelishDomain is your destination for unforgettable dining experiences. Join us in celebrating the art of food today.</p>
-                        <button className='btn mt-4 bg-[#66A000] border-[#66A000] text-white'>Know more About us</button>
+                        <Link to="/about" className='btn mt-4 bg-[#66A000] border-[#66A000] text-white'>Know more About us</Link>
+
                     </motion.div>
                 </div>
             </SwiperSlide>

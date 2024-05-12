@@ -12,6 +12,7 @@ import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
 import AuthProvider from './components/providers/AuthProvider.jsx';
 import AvailableFoods from './components/AvailableFoods.jsx';
+import AboutUs from './components/AboutUs.jsx';
 
 
 const router = createBrowserRouter([
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/available",
         element: <AvailableFoods></AvailableFoods>
+      },
+      {
+        path: "/about",
+        element: <AboutUs></AboutUs>
       },
       {
         path: "/login",

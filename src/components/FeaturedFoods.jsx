@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const AvailableFoods = () => {
+const FeaturedFoods = () => {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
@@ -12,7 +12,9 @@ const AvailableFoods = () => {
                     throw new Error('Failed to fetch data');
                 }
                 const data = await response.json();
-                setItems(data);
+                data.sort((a, b) => b.foodQuantity - a.foodQuantity);
+                const limitedItems = data.slice(0, 6);
+                setItems(limitedItems);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -23,8 +25,7 @@ const AvailableFoods = () => {
 
     return (
         <div className="container mx-auto">
-            <h1 className="text-3xl font-semibold mb-4 text-center mt-5 relative z-10 bg-gradient-to-r from-[#66A000] to-green-900 text-white py-2 px-4 rounded-lg shadow-md">Available Foods</h1>
-
+            <h1 className="text-3xl font-semibold mb-4 text-center mt-5">Featured Foods</h1>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {items.map(item => (
                     <div key={item._id} className="bg-white shadow-md rounded-md overflow-hidden hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1">
@@ -46,8 +47,11 @@ const AvailableFoods = () => {
                     </div>
                 ))}
             </div>
+            <div className="text-center mt-8">
+                <Link to="/available" className="btn bg-gray-800 text-white px-4 py-2 rounded-md">Show All</Link>
+            </div>
         </div>
     );
 };
 
-export default AvailableFoods;
+export default FeaturedFoods;
