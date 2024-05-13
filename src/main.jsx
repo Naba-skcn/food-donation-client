@@ -14,7 +14,8 @@ import AuthProvider from './components/providers/AuthProvider.jsx';
 import AvailableFoods from './components/AvailableFoods.jsx';
 import AboutUs from './components/AboutUs.jsx';
 import PrivateRoute from './components/routes/Privateroute.jsx';
-import AddFood from './AddFood.jsx';
+import AddFood from './components/AddFood.jsx';
+import ViewDetails from './components/ViewDetails.jsx';
 
 
 const router = createBrowserRouter([
@@ -44,7 +45,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/add",
-        element: <PrivateRoute><AddFood></AddFood></PrivateRoute>
+        element: <PrivateRoute><AddFood></AddFood></PrivateRoute>,
+      },      
+      {
+        path: "/food/:id",
+        element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/food/${params.id}`)
       }
     ]
   },

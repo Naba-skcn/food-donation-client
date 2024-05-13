@@ -33,15 +33,15 @@ const FeaturedFoods = () => {
                         <div className="p-4">
                             <h2 className="text-2xl font-semibold">{item.foodName}</h2>
                             <div className="flex items-center mt-2">
-                                <img src={item.donator.donatorImage} alt={item.donator.donatorName} className="w-8 h-8 rounded-full" />
-                                <p className="text-black font-semibold ml-2">{item.donator.donatorName}</p>
+                                <img src={item.donatorImage} alt={item.donatorName} className="w-8 h-8 rounded-full" />
+                                <p className="text-black font-semibold ml-2">{item.donatorName}</p>
                             </div>
                             <p className="text-gray-500 text-left"><span className='text-black'>Quantity:</span> {item.foodQuantity}</p>
                             <p className="text-gray-500 text-left"><span className='text-black'>Pickup Location:</span> {item.pickupLocation}</p>
                             <p className="text-gray-500 text-left"><span className='text-black'>Expired Date/Time:</span> {item.expiredDateTime}</p>
                             <p className="text-gray-500 text-left"><span className='text-black'>Additional Notes:</span> {item.additionalNotes}</p>
                             <div className="flex justify-end mt-2">
-                                <Link to={`/details/${item._id}`} className="btn bg-[#66A000] border-white text-white">View Details</Link>
+                                <Link to={`/food/${item._id}`} className="btn bg-[#66A000] border-white text-white">View Details</Link>
                             </div>
                         </div>
                     </div>

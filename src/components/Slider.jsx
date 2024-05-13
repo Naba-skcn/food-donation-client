@@ -35,7 +35,7 @@ const Slider = () => {
             </SwiperSlide>
             <SwiperSlide>
                 <div className="relative">
-                    <img className='w-[1300px] h-[450px] rounded-lg' src="https://media.istockphoto.com/id/485365852/photo/group-of-volunteers-provide-groceries-donations-to-needy-families-charity.jpg?s=612x612&w=0&k=20&c=TfoYE1Ksg4Mpfd_XvsLn40_JnFmerfA9YNxa7Bs6Ou4=" alt="" />
+                    <img className='w-[1300px] h-[450px] rounded-lg' src="https://media.istockphoto.com/id/1130406978/photo/adorable-young-food-bank-volunteer-holds-thank-you-sign.jpg?s=612x612&w=0&k=20&c=6Vz3YIq85y6MTdQWOGZHRJKX93d_X8k0HIejay2xQco=" alt="" />
                     <motion.div 
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -50,7 +50,7 @@ const Slider = () => {
             </SwiperSlide>
             <SwiperSlide>
                 <div className="relative">
-                    <img className='w-[1300px] h-[450px] rounded-lg' src="https://media.istockphoto.com/id/1498170935/photo/a-pregnant-woman-is-taking-donation-boxes-at-the-food-and-clothes-bank-table.jpg?s=612x612&w=0&k=20&c=oUunwa6vu9mELi0bgkTvtQdoeZLX7U_t25HWrKLf5Wo=" alt="" />
+                    <img className='w-[1300px] h-[450px] rounded-lg' src="https://media.istockphoto.com/id/1498170325/photo/volunteers-are-working-together-at-the-food-and-clothes-bank.jpg?s=612x612&w=0&k=20&c=NjRPlqH8EBSx11OSFPxYL3olk662uMTTyR6BUKSB9u4=" alt="" />
                     <motion.div 
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
