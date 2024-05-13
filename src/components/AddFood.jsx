@@ -46,10 +46,23 @@ const AddFood = () => {
         try{
             const {data} = await axios.post('http://localhost:5000/addFood', foodData)
             console.log(data);
-        }   
-        catch(err){
-            console.log(err)
-        } 
+            Swal.fire({
+                icon: 'success',
+                title: 'Food Added!',
+                text: 'Your food has been successfully added.',
+            });
+    
+            // Reset form fields after successful submission
+            form.reset();
+        } catch(err) {
+            console.error(err);
+            // Show SweetAlert notification upon error
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'An error occurred while adding the food. Please try again later.',
+            });
+        }
     };
 
     return (
@@ -85,7 +98,7 @@ const AddFood = () => {
                             </div>
                             <label htmlFor="foodStatus" className="text-xs text-white bg-green-900 p-1 rounded-lg">Food Status</label>
                             <div className="col-span-full">
-                                <input id="foodStatus" name='foodStatus' defaultValue="Available" type="text" placeholder="Food Status" className="w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300" />
+                                <input id="foodStatus" name='foodStatus' defaultValue="Available" type="text" placeholder="Food Status" readOnly className="w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300" />
                             </div>
                             <label htmlFor="additionalNotes" className="text-xs text-white bg-green-900 p-1 rounded-lg">Additional Notes</label>
                             <div className="col-span-full">

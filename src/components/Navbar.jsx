@@ -25,7 +25,10 @@ const Navbar = () => {
         <>
             <li><NavLink to="/">Home</NavLink></li>
             <li><NavLink to="/available">Available Foods</NavLink></li>
-            {user && <li><NavLink to="/add">Add a Food</NavLink></li>}
+            {user && <li><NavLink to="/add">Add a Food</NavLink></li>
+            }
+            {user && <li><NavLink to="/myFood">Manage My Foods</NavLink></li>
+            }
         </>
     );
 

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 const AvailableFoods = () => {
     const [items, setItems] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [sortedItems, setSortedItems] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -12,7 +14,9 @@ const AvailableFoods = () => {
                     throw new Error('Failed to fetch data');
                 }
                 const data = await response.json();
-                setItems(data);
+                // Filter items where food status is 'Available'
+                const availableItems = data.filter(item => item.foodStatus === 'Available');
+                setItems(availableItems);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -21,12 +25,39 @@ const AvailableFoods = () => {
         fetchData();
     }, []);
 
+    useEffect(() => {
+        // Sort items by expiration date
+        const sorted = [...items].sort((a, b) => new Date(a.expiredDateTime) - new Date(b.expiredDateTime));
+        setSortedItems(sorted);
+    }, [items]);
+
+    const handleSearch = () => {
+        if (!searchTerm) {
+            setSortedItems([...items]);
+            return;
+        }
+        const filteredItems = items.filter(item => item.foodName.toLowerCase().includes(searchTerm.toLowerCase()));
+        setSortedItems(filteredItems);
+    };
+
+    const handleSort = () => {
+        // Reverse the sorting order
+        const reversed = [...sortedItems].reverse();
+        setSortedItems(reversed);
+    };
+
     return (
         <div className="container mx-auto">
             <h1 className="text-3xl font-semibold mb-4 text-center mt-5 relative z-10 bg-gradient-to-r from-[#66A000] to-green-900 text-white py-2 px-4 rounded-lg shadow-md">Available Foods</h1>
 
+            <div className="flex justify-center my-4">
+                <input type="text" placeholder="Search by Food Name" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="border border-gray-300 rounded-md px-4 py-2 mr-4" />
+                <button onClick={handleSearch} className="btn bg-[#66A000] text-white">Search</button>
+                <button onClick={handleSort} className="btn bg-[#66A000] text-white ml-4">Sort by Expiry Date</button>
+            </div>
+
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {items.map(item => (
+                {sortedItems.map(item => (
                     <div key={item._id} className="bg-white shadow-md rounded-md overflow-hidden hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1">
                         <img src={item.foodImage} alt={item.foodName} className="w-full h-40 object-cover rounded-t-md" />
                         <div className="p-4">

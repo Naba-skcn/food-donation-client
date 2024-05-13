@@ -16,6 +16,8 @@ import AboutUs from './components/AboutUs.jsx';
 import PrivateRoute from './components/routes/Privateroute.jsx';
 import AddFood from './components/AddFood.jsx';
 import ViewDetails from './components/ViewDetails.jsx';
+import MyFoods from './components/MyFoods.jsx';
+import Update from './components/Update.jsx';
 
 
 const router = createBrowserRouter([
@@ -46,12 +48,20 @@ const router = createBrowserRouter([
       {
         path: "/add",
         element: <PrivateRoute><AddFood></AddFood></PrivateRoute>,
-      },      
+      },   
+      {
+        path:"/myFood",
+        element: <PrivateRoute><MyFoods></MyFoods></PrivateRoute>
+      },   
+      {
+        path: "/update/:id",
+        element: <PrivateRoute><Update></Update></PrivateRoute>,
+      },
       {
         path: "/food/:id",
         element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/food/${params.id}`)
-      }
+      },
     ]
   },
 ]);
