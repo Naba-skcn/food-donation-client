@@ -18,6 +18,7 @@ import AddFood from './components/AddFood.jsx';
 import ViewDetails from './components/ViewDetails.jsx';
 import MyFoods from './components/MyFoods.jsx';
 import Update from './components/Update.jsx';
+import MyRequest from './components/MyRequest.jsx';
 
 
 const router = createBrowserRouter([
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
         path:"/myFood",
         element: <PrivateRoute><MyFoods></MyFoods></PrivateRoute>
       },   
+      {
+        path: "/requested",
+        element: <PrivateRoute><MyRequest></MyRequest></PrivateRoute>
+      },
       {
         path: "/update/:id",
         element: <PrivateRoute><Update></Update></PrivateRoute>,

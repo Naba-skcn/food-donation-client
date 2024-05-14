@@ -29,6 +29,8 @@ const Navbar = () => {
             }
             {user && <li><NavLink to="/myFood">Manage My Foods</NavLink></li>
             }
+            {user && <li><NavLink to="/requested">My Food Request</NavLink></li>
+            }
         </>
     );
 

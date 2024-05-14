@@ -84,6 +84,38 @@ const ViewDetails = ( ) => {
         }
     };
 
+    const handleRequest = async () => {
+        try {
+            // Send a PUT request to update the food status to "requested"
+            const response = await axios.put(`http://localhost:5000/food/${id}/request`);
+            if (response.status === 200) {
+                // If the request is successful, update the product state
+                setProduct(prevProduct => ({
+                    ...prevProduct,
+                    foodStatus: 'Requested'
+                }));
+                // Show success message
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Food Requested!',
+                    text: 'Your request for this food has been successfully submitted.',
+                });
+            } else {
+                throw new Error('Failed to request food');
+            }
+        } catch (error) {
+            console.error('Error requesting food:', error);
+            // Show error message
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'An error occurred while requesting the food. Please try again later.',
+            });
+        }
+    };
+
+    console.log(product);
+
     return (
         <div className="container mx-auto">
             <h1 className="text-3xl font-semibold mb-4 text-center mt-5 relative z-10 bg-gradient-to-r from-[#66A000] to-green-900 text-white py-2 px-4 rounded-lg shadow-md">Food Details</h1>
@@ -159,7 +191,7 @@ const ViewDetails = ( ) => {
                     </fieldset>
                 </form>
                                     <div className="modal-action col-span-full">
-                                    <button className="btn btn-block text-white rounded-md bg-[#66A000] border-[#66A000]">Request</button>
+                                    <button onClick={handleRequest} className="btn btn-block text-white rounded-md bg-[#66A000] border-[#66A000]">Request</button>
                                         
                                     </div>
                                 </div>
