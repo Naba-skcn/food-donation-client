@@ -1,7 +1,18 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import { Typewriter } from 'react-simple-typewriter';
 
 const AboutUs = () => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
+
+    const onSubmit = (data) => {
+        console.log(data); // Handle form submission logic here
+    };
+
     return (
         <div className='container mx-auto'>
             <h1 className="text-3xl font-semibold mb-4 text-center mt-5">About NutriHarvest</h1>
@@ -61,6 +72,17 @@ const AboutUs = () => {
                             </a>
                         </div>
                     </div>
+                    <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto">
+                        <div className="grid grid-cols-1 gap-y-6">
+                            <input type="text" placeholder="Name" {...register('firstName')} className="input-box" />
+                            <input type="text" placeholder="Email" {...register('lastName', { required: true })} className="input-box" />
+                            {errors.lastName && <p className="error-text">Last name is required.</p>}
+                            <input type="text" placeholder="Amount" {...register('age', { pattern: /\d+/ })} className="input-box" />
+                            {errors.age && <p className="error-text">Please enter a number for age.</p>}
+                            <button type="submit" className="submit-button">Donate</button>
+                        </div>
+                    </form>
+                    <p className="text-center text-gray-600 mt-8">Are you willing to donate surplus food? Visit our <a href="#" className="underline">food donation page</a> to learn more.</p>
                 </article>
             </div>
         </div>

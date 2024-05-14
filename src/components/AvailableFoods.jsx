@@ -41,9 +41,9 @@ const AvailableFoods = () => {
     };
 
     const handleSort = () => {
-        // Reverse the sorting order
-        const reversed = [...sortedItems].reverse();
-        setSortedItems(reversed);
+        // Sort items by expiration date
+        const sorted = [...sortedItems].sort((a, b) => new Date(a.expiredDateTime) - new Date(b.expiredDateTime));
+        setSortedItems(sorted);
     };
 
     return (
