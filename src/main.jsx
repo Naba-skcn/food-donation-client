@@ -19,12 +19,14 @@ import ViewDetails from './components/ViewDetails.jsx';
 import MyFoods from './components/MyFoods.jsx';
 import Update from './components/Update.jsx';
 import MyRequest from './components/MyRequest.jsx';
+import Error from './components/Error.jsx';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
