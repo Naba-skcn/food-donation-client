@@ -5,6 +5,7 @@ const AvailableFoods = () => {
     const [items, setItems] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [sortedItems, setSortedItems] = useState([]);
+    const [isThreeColumnLayout, setIsThreeColumnLayout] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -26,7 +27,6 @@ const AvailableFoods = () => {
     }, []);
 
     useEffect(() => {
-        // Sort items by expiration date
         const sorted = [...items].sort((a, b) => new Date(a.expiredDateTime) - new Date(b.expiredDateTime));
         setSortedItems(sorted);
     }, [items]);
@@ -41,9 +41,12 @@ const AvailableFoods = () => {
     };
 
     const handleSort = () => {
-        // Sort items by expiration date
         const sorted = [...sortedItems].sort((a, b) => new Date(a.expiredDateTime) - new Date(b.expiredDateTime));
         setSortedItems(sorted);
+    };
+
+    const toggleLayout = () => {
+        setIsThreeColumnLayout(prevState => !prevState);
     };
 
     return (
@@ -54,9 +57,10 @@ const AvailableFoods = () => {
                 <input type="text" placeholder="Search by Food Name" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="border border-gray-300 rounded-md px-4 py-2 mr-4" />
                 <button onClick={handleSearch} className="btn bg-[#66A000] text-white">Search</button>
                 <button onClick={handleSort} className="btn bg-[#66A000] text-white ml-4">Sort by Expiry Date</button>
+                <button onClick={toggleLayout} className="btn bg-[#66A000] text-white ml-4">{isThreeColumnLayout ? 'Change Layout' : 'Change Layout'}</button>
             </div>
 
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className={`grid ${isThreeColumnLayout ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1 sm:grid-cols-2' } gap-4`}>
                 {sortedItems.map(item => (
                     <div key={item._id} className="bg-white shadow-md rounded-md overflow-hidden hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1">
                         <img src={item.foodImage} alt={item.foodName} className="w-full h-40 object-cover rounded-t-md" />

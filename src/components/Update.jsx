@@ -39,7 +39,7 @@ const Update = () => {
         const _id = product._id;
         const foodName = form.foodName.value;
         const foodImage = form.foodImage.value;
-        const foodQuantity = product.foodQuantity;
+        const foodQuantity = form.foodQuantity.value;
         const pickupLocation = form.pickupLocation.value;
         const expiredDateTime = form.expiredDateTime.value;
         const additionalNotes = form.additionalNotes.value;
