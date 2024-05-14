@@ -1,82 +1,63 @@
 import React, { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
 import { AuthContext } from './providers/AuthProvider';
 
 const MyRequest = () => {
     const { user } = useContext(AuthContext);
-    const [products, setProducts] = useState([]);
+    const [foodRequests, setFoodRequests] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        
-        fetchProducts();
-    }, [user]);
-     
-
-    console.log(products)
-
-    const fetchProducts = async () => {
-        try {
-            const response = await fetch(`http://localhost:5000/requested/${user?.email}`);
-            if (response.ok) {
-                const data = await response.json();
-                setProducts(data);
-            } else {
-                throw new Error('Failed to fetch products');
+        const fetchFoodRequests = async () => {
+            try {
+                const response = await axios.get(`http://localhost:5000/requested-foods/${user?.email}`);
+                if (response.status === 200) {
+                    setFoodRequests(response.data);
+                } else {
+                    throw new Error('Failed to fetch food requests');
+                }
+            } catch (error) {
+                console.error('Error fetching food requests:', error);
+                setFoodRequests([]); // Clear food requests in case of error
+            } finally {
+                setLoading(false);
             }
-        } catch (error) {
-            console.error('Error fetching products:', error);
-        } finally {
-            setLoading(false);
-        }
-    };
-    
+        };
 
+        fetchFoodRequests();
+    }, [user]);
+ console.log(foodRequests);
     return (
         <div className="container mx-auto">
-            <h1 className="text-3xl font-semibold mb-4 text-center mt-5 relative z-10 bg-gradient-to-r from-[#66A000] to-green-900 text-white py-2 px-4 rounded-lg shadow-md">Manage My Foods</h1>  
-            <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-200">
-                    <thead className="bg-gray-50">
+            <h1 className="text-3xl font-semibold mb-4 text-center mt-5 relative z-10 bg-gradient-to-r from-[#66A000] to-green-900 text-white py-2 px-4 rounded-lg shadow-md">My Requested Foods</h1>
+            {loading ? (
+                <p>Loading...</p>
+            ) : foodRequests.length > 0 ? (
+                <table className="table-auto w-full">
+                    <thead>
                         <tr>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Food Image
-                            </th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Food Name
-                            </th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Food Quantity
-                            </th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Expired Date/Time
-                            </th>
-                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Actions
-                            </th>
+                            <th className="border px-4 py-2">Donor Name</th>
+                            <th className="border px-4 py-2">Food Name</th>
+                            <th className="border px-4 py-2">Pickup Location</th>
+                            <th className="border px-4 py-2">Expire Date</th>
+                            <th className="border px-4 py-2">Request Date</th>
                         </tr>
                     </thead>
-                    <tbody className="bg-white divide-y divide-gray-200">
-                        {products.map(product => (
-                            <tr key={product._id}>
-                                <td className="px-6 py-3 whitespace-nowrap">
-                                    <img className="rounded-lg h-16 w-16" src={product.foodImage} alt="" />
-                                </td>
-                                <td className="px-6 py-3 whitespace-nowrap">
-                                    <div className="text-sm text-left text-gray-900">{product.foodName}</div>
-                                </td>
-                                <td className="px-6 py-3 whitespace-nowrap">
-                                    <div className="text-sm text-left text-gray-900">{product.foodQuantity}</div>
-                                </td>
-                                <td className="px-6 py-3 whitespace-nowrap">
-                                    <div className="text-sm text-left text-gray-900">{product.expiredDateTime}</div>
-                                </td>
-                                <td className="px-6 py-3 text-left whitespace-nowrap text-sm text-gray-500">
-                                </td>
+                    <tbody>
+                        {foodRequests.map(request => (
+                            <tr key={request._id}>
+                                <td className="border px-4 py-2">{request.donatorName}</td>
+                                <td className="border px-4 py-2">{request.foodName}</td>
+                                <td className="border px-4 py-2">{request.pickupLocation}</td>
+                                <td className="border px-4 py-2">{request.expiredDateTime}</td>
+                                <td className="border px-4 py-2">{request.requestDate}</td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
-            </div> 
+            ) : (
+                <p>No requested foods found for this user.</p>
+            )}
         </div>
     );
 };
