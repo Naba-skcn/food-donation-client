@@ -20,6 +20,10 @@ import MyFoods from './components/MyFoods.jsx';
 import Update from './components/Update.jsx';
 import MyRequest from './components/MyRequest.jsx';
 import Error from './components/Error.jsx';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 
 
 const router = createBrowserRouter([
@@ -73,10 +77,14 @@ const router = createBrowserRouter([
   },
 ]);
 
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-   <AuthProvider>
+    <QueryClientProvider client={queryClient}>
+    <AuthProvider>
    <RouterProvider router={router} />
    </AuthProvider>
+    </QueryClientProvider>
   </React.StrictMode>,
 )
