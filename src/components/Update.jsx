@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import UseAuth from './routes/UseAuth';
+import { Helmet } from 'react-helmet-async';
 
 const Update = () => {
     const { user } = UseAuth();
@@ -85,6 +86,7 @@ const Update = () => {
 
     return (
         <div className='container mx-auto'>
+            <Helmet><title>NutriHarvest | Update</title></Helmet>
             <h1 className="text-3xl font-semibold mb-4 text-center mt-5 relative z-10 bg-gradient-to-r from-[#66A000] to-green-900 text-white py-2 px-4 rounded-lg shadow-md">Update My Foods</h1>  
             <form onSubmit={handleSubmit} className="container flex flex-col mx-auto bg-slate-100 rounded-lg p-8 space-y-12">
                 <fieldset className="p-6 rounded-md shadow-sm dark:bg-gray-50">

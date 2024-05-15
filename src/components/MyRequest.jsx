@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { AuthContext } from './providers/AuthProvider';
+import { Helmet } from 'react-helmet-async';
 
 const MyRequest = () => {
     const { user } = useContext(AuthContext);
@@ -29,6 +30,7 @@ const MyRequest = () => {
  console.log(foodRequests);
     return (
         <div className="container mx-auto">
+            <Helmet><title>NutriHarvest | My Requested Foods</title></Helmet>
             <h1 className="text-3xl font-semibold mb-4 text-center mt-5 relative z-10 bg-gradient-to-r from-[#66A000] to-green-900 text-white py-2 px-4 rounded-lg shadow-md">My Requested Foods</h1>
             {loading ? (
                 <p>Loading...</p>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet, HelmetData } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 
 const AvailableFoods = () => {
@@ -51,6 +52,7 @@ const AvailableFoods = () => {
 
     return (
         <div className="container mx-auto">
+            <Helmet><title>NutriHarvest | Available Foods</title></Helmet>
             <h1 className="text-3xl font-semibold mb-4 text-center mt-5 relative z-10 bg-gradient-to-r from-[#66A000] to-green-900 text-white py-2 px-4 rounded-lg shadow-md">Available Foods</h1>
 
             <div className="flex justify-center my-4">

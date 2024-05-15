@@ -5,6 +5,7 @@ import { MdSecurityUpdateGood, MdDeleteForever } from "react-icons/md";
 import axios from 'axios';
 import { useQuery, useMutation } from '@tanstack/react-query'; // Check import
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 const MyFoods = () => {
     const { user } = useContext(AuthContext);
@@ -45,6 +46,7 @@ const MyFoods = () => {
 
     return (
         <div className="container mx-auto">
+            <Helmet><title>NutriHarvest | Manage My Foods</title></Helmet>
             <h1 className="text-3xl font-semibold mb-4 text-center mt-5 relative z-10 bg-gradient-to-r from-[#66A000] to-green-900 text-white py-2 px-4 rounded-lg shadow-md">Manage My Foods</h1>  
             <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">

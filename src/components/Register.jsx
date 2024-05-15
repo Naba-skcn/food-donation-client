@@ -4,6 +4,7 @@ import { AuthContext } from './providers/AuthProvider';
 import { getAuth, updateProfile } from 'firebase/auth'; 
 import { FaEye, FaRegEyeSlash } from "react-icons/fa";
 import swal from 'sweetalert';
+import { Helmet } from 'react-helmet-async';
 
 
 const Register = () => {
@@ -50,6 +51,7 @@ const Register = () => {
 
     return (
         <div className="hero min-h-screen container mx-auto rounded-lg bg-center bg-cover bg-[url('https://media.istockphoto.com/id/1182569262/photo/student-hands-holding-red-apple-with-blackboard-background-happy-teachers-day.jpg?s=612x612&w=0&k=20&c=uCyu3NunzWMDuntidQuSNdLEhnSuFrNYrMgWK50hnAM=')]">
+            <Helmet><title>NutriHarvest | Register</title></Helmet>
             <div className="hero-content flex-col ">
                 <div className="text-center">
                     <h1 className="text-5xl font-bold text-white">Sign-up now!</h1>

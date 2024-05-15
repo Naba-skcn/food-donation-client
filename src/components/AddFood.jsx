@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { useParams } from 'react-router-dom';
 import UseAuth from './routes/UseAuth';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 
 const AddFood = () => {
     const { user } = UseAuth();
@@ -67,6 +68,7 @@ const AddFood = () => {
 
     return (
         <div className="container mx-auto">
+            <Helmet><title>NutriHarvest | Add Foods</title></Helmet>
             <h1 className="text-3xl font-semibold mb-4 text-center mt-5 relative z-10 bg-gradient-to-r from-[#66A000] to-green-900 text-white py-2 px-4 rounded-lg shadow-md">Add Foods</h1>
             <section className="p-6 bg-center bg-cover bg-[url('https://media.istockphoto.com/id/1283712032/photo/cardboard-box-filled-with-non-perishable-foods-on-wooden-table-high-angle-view.jpg?s=612x612&w=0&k=20&c=7B2cUwQB2LeBmIh5JElkO5DoE7GRq-CRVmERsMSJoVY=')] dark:text-gray-900">
                 <form onSubmit={handleSubmit} className="container flex flex-col mx-auto bg-opacity-30 backdrop-blur-lg p-8 space-y-12">

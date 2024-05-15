@@ -5,6 +5,7 @@ import { AiFillGoogleCircle, AiFillGithub } from "react-icons/ai";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 
 
 const Login = () => {
@@ -20,33 +21,60 @@ const Login = () => {
             // Attempt to log in
             await signInUser(email, password);
             toast.success('Login successful!');
-            e.target.reset();
-            //get access token
+            // Get access token
             const user = { email };
-            console.log(user);
-            axios.post('http://localhost:5000/jwt', user, {withCredentials: true})
-            .then(res =>{
+            axios.post('http://localhost:5000/jwt', user, {
+                withCredentials: true,
+            })
+            .then(res => {
                 console.log(res.data)
-                if(res.data.success){
+                if (res.data.success) {
                     navigate('/');
+                } else {
+                    toast.error('Failed to get access token.');
                 }
             })
+            .catch(error => {
+                console.error(error);
+                toast.error('Failed to get access token.');
+            });
         } catch (error) {
             console.error(error);
             toast.error('Login failed. Please check your email and password.');
         }
     };
 
-    const handleGoogleSignIn = () => {
-        signInWithGoogle()
-            .then(result => {
-                console.log(result.user);
+        
+    const handleGoogleSignIn = async (e) => {
+        e.preventDefault();
+        const email = e.target.email;
+        
+        try {
+            // Attempt to log in
+            await signInWithGoogle(email);
+            toast.success('Login successful!');
+            // Get access token
+            const user = { email };
+            axios.post('http://localhost:5000/jwt', user, {
+                withCredentials: true,
+            })
+            .then(res => {
+                console.log(res.data)
+                if (res.data.success) {
+                    navigate('/');
+                } else {
+                    toast.error('Failed to get access token.');
+                }
             })
             .catch(error => {
                 console.error(error);
-                toast.error('Google Sign-In failed.');
+                toast.error('Failed to get access token.');
             });
-    }
+        } catch (error) {
+            console.error(error);
+            toast.error('Login failed. Please check your email and password.');
+        }
+    };
 
     const handleGithubSignIn = () => {
         signInWithGithub()
@@ -61,7 +89,7 @@ const Login = () => {
 
     return (
         <div className="hero container mx-auto rounded-lg min-h-screen bg-center bg-cover bg-[url('https://media.istockphoto.com/id/1182569262/photo/student-hands-holding-red-apple-with-blackboard-background-happy-teachers-day.jpg?s=612x612&w=0&k=20&c=uCyu3NunzWMDuntidQuSNdLEhnSuFrNYrMgWK50hnAM=')]">
-            
+            <Helmet><title>NutriHarvest | Login</title></Helmet>
             <ToastContainer />
             <div className="hero-content flex-col ">
                 <div className="text-center">

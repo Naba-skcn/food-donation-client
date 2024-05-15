@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import UseAuth from './routes/UseAuth';
+import { Helmet } from 'react-helmet-async';
 
 const ViewDetails = () => {
     const { user } = UseAuth();
@@ -116,6 +117,7 @@ const ViewDetails = () => {
     
     return (
         <div className="container mx-auto">
+            <Helmet><title>NutriHarvest | Food Details</title></Helmet>
             <h1 className="text-3xl font-semibold mb-4 text-center mt-5 relative z-10 bg-gradient-to-r from-[#66A000] to-green-900 text-white py-2 px-4 rounded-lg shadow-md">Food Details</h1>
             {loading ? (
                 <p>Loading...</p>
