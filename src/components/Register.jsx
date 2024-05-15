@@ -39,7 +39,7 @@ const Register = () => {
         try {
             // Create user in Firebase
             const result = await createUser(email, password);
-            // Update user profile with additional info
+            // Update user profile 
             await updateProfile(getAuth().currentUser, { displayName: name, photoURL: photoURL });
             swal("Registration successful!");
             handleSignOut();

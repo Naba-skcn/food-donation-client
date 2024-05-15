@@ -10,7 +10,7 @@ const AboutUs = () => {
     } = useForm();
 
     const onSubmit = (data) => {
-        console.log(data); // Handle form submission logic here
+        console.log(data); 
     };
 
     return (

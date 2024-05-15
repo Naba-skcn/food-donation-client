@@ -7,7 +7,7 @@ const Navbar = () => {
     const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark'); 
 
     useEffect(() =>{
-        localStorage.setItem('theme', theme); // Use setItem instead of setTheme
+        localStorage.setItem('theme', theme); 
         document.querySelector('html').setAttribute('data-theme', theme);
     }, [theme]);
 
