@@ -4,6 +4,7 @@ import { AuthContext } from './providers/AuthProvider';
 import { AiFillGoogleCircle, AiFillGithub } from "react-icons/ai";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 
 const Login = () => {
@@ -14,13 +15,22 @@ const Login = () => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-
+        
         try {
             // Attempt to log in
             await signInUser(email, password);
             toast.success('Login successful!');
             e.target.reset();
-            navigate('/');
+            //get access token
+            const user = { email };
+            console.log(user);
+            axios.post('http://localhost:5000/jwt', user, {withCredentials: true})
+            .then(res =>{
+                console.log(res.data)
+                if(res.data.success){
+                    navigate('/');
+                }
+            })
         } catch (error) {
             console.error(error);
             toast.error('Login failed. Please check your email and password.');

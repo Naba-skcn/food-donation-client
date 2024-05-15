@@ -75,7 +75,6 @@ const Update = () => {
             form.reset();
         } catch (err) {
             console.error(err);
-            // Show SweetAlert notification upon error
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
