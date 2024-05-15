@@ -76,17 +76,38 @@ const Login = () => {
         }
     };
 
-    const handleGithubSignIn = () => {
-        signInWithGithub()
-            .then(result => {
-                console.log(result.user);
+    const handleGithubSignIn = async (e) => {
+        e.preventDefault();
+        const email = e.target.email;
+        
+        try {
+            // Attempt to log in
+            await signInWithGithub(email);
+            toast.success('Login successful!');
+            // Get access token
+            const user = { email };
+            axios.post('http://localhost:5000/jwt', user, {
+                withCredentials: true,
+            })
+            .then(res => {
+                console.log(res.data)
+                if (res.data.success) {
+                    navigate('/');
+                } else {
+                    toast.error('Failed to get access token.');
+                }
             })
             .catch(error => {
                 console.error(error);
-                toast.error('GitHub Sign-In failed.');
+                toast.error('Failed to get access token.');
             });
-    }
+        } catch (error) {
+            console.error(error);
+            toast.error('Login failed. Please check your email and password.');
+        }
+    };
 
+    
     return (
         <div className="hero container mx-auto rounded-lg min-h-screen bg-center bg-cover bg-[url('https://media.istockphoto.com/id/1182569262/photo/student-hands-holding-red-apple-with-blackboard-background-happy-teachers-day.jpg?s=612x612&w=0&k=20&c=uCyu3NunzWMDuntidQuSNdLEhnSuFrNYrMgWK50hnAM=')]">
             <Helmet><title>NutriHarvest | Login</title></Helmet>

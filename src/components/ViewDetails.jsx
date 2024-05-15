@@ -171,7 +171,7 @@ const ViewDetails = () => {
         <input id="donatorEmail" name='donatorEmail' type="email" placeholder="Enter your email" className="w-full rounded-md border focus:ring focus:ring-opacity-75 focus:ring-violet-600 border-gray-300 px-3 py-2" />
     )}
                          </div>
-                         <label htmlFor="requestDate" className="text-xs text-white bg-green-900 p-1 rounded-lg">Current Time</label>
+                         <label htmlFor="requestDate" className="text-xs text-white bg-green-900 p-1 rounded-lg">Request Date/Time</label>
 <input id="requestDate" name='requestDate' type="text" value={new Date().toLocaleString()} readOnly />
 
                             <label htmlFor="pickupLocation" className="text-xs text-white bg-green-900 p-1 rounded-lg">Pickup Location</label>
